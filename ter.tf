@@ -6,7 +6,7 @@ variable "amis" {
   type = "map"
   default =  {
     "ap-south-1" = "ami-0123b531fc646552f"
-    "us-east-1" = ""
+    "us-east-1" = "ami-04b9e92b5572fa0d1"
   }
 }
 
@@ -32,7 +32,7 @@ resource "aws_instance" "web" {
     inline = [
       "sudo apt-get update -y",
       "sudo apt install docker.io -y",
-      "sudo docker pull tpn50/web_app:v1"
+      "sudo docker run -p 8080:8080 tpn50/web_app:v1"
     ]
   }
 }
